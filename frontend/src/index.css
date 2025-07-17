@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link{
+  margin-left: 40px;
+}
+
+
+/* Footer */
+
+.footer a{
+  list-style-type: none;
+  text-decoration: none;
+  color: rgb(89, 89, 89);
+  font-size: 17px;
+}
+
+.content{
+  font-size: 11px;
+  color: rgb(156, 156, 156);
+}
+
+.last-line{
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none ;
+  font-size: 12px;
+}
+
+.footer-links i{
+  margin-left: 20px;
+  
+}
+
+
+
+/* About- Hero */
+
+.hero-paras{
+  font-size: 15px;
+  text-align: justify;
+  width: 900px;
+  
+}
+
+.hero-row{
+  margin: 100px 0 0 0;
+  line-height: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(46, 46, 46);
+}
+
+/* About - Team.js */
+
+.founders img{
+  height: 230px;
+  width: 230px;
+  border-radius: 50%;
+  margin: 80px 0 0 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.h5{
+  text-align: center;
+  margin-top: 25px;
+}
+
+.p{
+  text-align: center;
+  margin-top: 25px;
+}
+
+
+/* Pricing - Brokerage */
+
+.first h6{
+  margin-top: 30px;
+}
+
+.sec h6{
+  margin-top: 30px;
+}
+
+.first p,li{
+  font-size: 13px;
+}
+
+.sec p{
+  font-size: 13px;
+}
+
+/* Support Hero */
+
+.support_hero{
+  width: 100vw;
+  height: 500px;
+  background-color: #387ed1;
+  margin: 0 0 0 -115px;
+}
+
+.hero_content{
+  width: 1200px;
+  /* border: 2px solid black; */
+  margin-left: 160px;
+  color:white;
+}
+
+.main_row{
+  display: flex;
+}
+
+/* support_CreateTicket */
+
+.support_CreateTicket a{
+  text-decoration: none;
+  
+}
+
+.support_CreateTicket ul{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    
+} 
