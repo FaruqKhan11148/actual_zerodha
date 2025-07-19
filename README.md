@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Zerodha Clone - MERN Stack Project
 
 This is a full-stack web application that replicates the core UI and basic features of [Zerodha](https://zerodha.com/) – India's leading stock trading platform. This clone was built using the **MERN stack**: MongoDB, Express.js, React.js, and Node.js.
