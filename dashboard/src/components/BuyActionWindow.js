@@ -4,11 +4,10 @@ import axios from "axios";
 import GeneralContext from "./GeneralContext";
 import "./BuyActionWindow.css";
 
-const BuyActionWindow = ({ uid }) => {
+const BuyActionWindow = ({ uid, onOrderPlaced }) => {
   const { closeBuyWindow } = useContext(GeneralContext);
-
   const [stockQuantity, setStockQuantity] = useState(1);
-  const [stockPrice, setStockPrice] = useState(0.0);
+  const [stockPrice, setStockPrice] = useState();
 
   const handleBuyClick = async () => {
     try {
@@ -20,7 +19,12 @@ const BuyActionWindow = ({ uid }) => {
       });
 
       alert("✅ Order submitted successfully!");
-      closeBuyWindow(); // move inside try block so it only closes on success
+
+      // Tell parent to refresh order list
+      if (onOrderPlaced) onOrderPlaced();
+
+      // Close the window after order placed
+      closeBuyWindow();
     } catch (err) {
       console.error("❌ Error submitting order:", err);
       alert("❌ Failed to submit order.");
@@ -53,7 +57,7 @@ const BuyActionWindow = ({ uid }) => {
               id="price"
               step="0.05"
               onChange={(e) => setStockPrice(Number(e.target.value))}
-              value={stockPrice}
+              value={stockPrice || ""}
             />
           </fieldset>
         </div>
