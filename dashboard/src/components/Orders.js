@@ -18,9 +18,9 @@ const Orders = () => {
   const submitOrder = async () => {
     try {
       const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
-        name: "AAPL",
-        qty: 5,
-        price: 200,
+        name: "Micro",
+        qty: 1,
+        price: 111,
         mode: "Buy"
       });
       console.log("✅ Order submitted:", response.data);
