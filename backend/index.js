@@ -34,16 +34,32 @@ app.get("/allPositions", async (req, res) => {
   res.json(allPositions);
 });
 
-app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,  
-    mode: req.body.mode,
-  });
+// app.post("/newOrder", async (req, res) => {
+//   let newOrder = new OrdersModel({
+//     name: req.body.name,
+//     qty: req.body.qty,
+//     price: req.body.price,  
+//     mode: req.body.mode,
+//   });
 
-  await newOrder.save();
-  console.log("Order saved!");
+//   await newOrder.save();
+//   console.log("Order saved!");
+// });
+
+app.post("/newOrder", async (req, res) => {
+  try {
+    const { name, qty, price, mode } = req.body;
+
+    const newOrder = new OrdersModel({ name, qty, price, mode });
+    await newOrder.save();
+
+    console.log("✅ Order saved:", newOrder);
+    // ‼️  Always close the request with a response:
+    res.status(201).json({ message: "Order saved", order: newOrder });
+  } catch (err) {
+    console.error("❌ Error saving order:", err);
+    res.status(500).json({ error: "Failed to save order" });
+  }
 });
 
 app.get('/allOrders', async (req, res) => {
