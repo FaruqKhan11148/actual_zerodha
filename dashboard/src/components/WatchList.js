@@ -132,9 +132,38 @@ const WatchListItem = ({ stock }) => {
 const WatchListActions = ({ uid }) => {
   const generalContext = useContext(GeneralContext);
 
-  const handleBuyClick = () => {
-    generalContext.openBuyWindow(uid);
-  };
+  // const handleBuyClick = () => {
+  //   generalContext.openBuyWindow(uid);
+  // };
+
+  const handleBuyClick = async () => {
+  try {
+    const stock = {
+      name: uid,
+      qty: 1,           // you can customize this later
+      price: 100,       // dummy value or fetch from somewhere
+      mode: "buy"
+    };
+
+    const response = await fetch("https://tradetrack-zbfc.onrender.com/newOrder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(stock)
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`HTTP error! ${response.status}: ${text}`);
+    }
+
+    const result = await response.json();
+    console.log("✅ Order placed:", result);
+  } catch (err) {
+    console.error("❌ Error placing order:", err.message);
+  }
+};
 
   return (
     <span className="actions">
