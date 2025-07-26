@@ -98,16 +98,25 @@ const WatchListItem = ({ stock }) => {
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchlistActions && <WatchListActions uid={stock.name} />}
+      {showWatchlistActions && <WatchListActions stock={stock} />}
     </li>
   );
 };
 
-const WatchListActions = ({ uid }) => {
-  const generalContext = useContext(GeneralContext);
+const WatchListActions = ({ stock }) => {
+  const handleBuyClick = async () => {
+    try {
+      const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
+        name: stock.name,
+        qty: 1, // You can customize this qty if you want dynamic input
+        price: stock.price,
+        mode: "Buy",
+      });
 
-  const handleBuyClick = () => {
-    generalContext.openBuyWindow(uid);
+      console.log("✅ Order submitted:", response.data);
+    } catch (err) {
+      console.error("❌ Error submitting order:", err);
+    }
   };
 
   return (
