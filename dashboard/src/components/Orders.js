@@ -6,7 +6,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3004/allOrders") // Replace with your backend URL
+    axios.get("https://tradetrack-zbfc.onrender.com/allHoldings/allOrders") // Replace with your backend URL
       .then((res) => {
         setOrders(res.data);
       })
