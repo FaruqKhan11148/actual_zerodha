@@ -104,19 +104,10 @@ const WatchListItem = ({ stock }) => {
 };
 
 const WatchListActions = ({ stock }) => {
-  const handleBuyClick = async () => {
-    try {
-      const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
-        name: stock.name,
-        qty: 1, // You can customize this qty if you want dynamic input
-        price: stock.price,
-        mode: "Buy",
-      });
+  const generalContext = useContext(GeneralContext);
 
-      console.log("✅ Order submitted:", response.data);
-    } catch (err) {
-      console.error("❌ Error submitting order:", err);
-    }
+  const handleBuyClick = () => {
+    generalContext.openBuyWindow(stock); // Pass full stock if needed
   };
 
   return (
