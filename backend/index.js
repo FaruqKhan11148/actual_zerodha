@@ -22,7 +22,7 @@ app.use(cors({
   allowedHeaders: ["Content-Type"]
 }));
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
@@ -58,7 +58,7 @@ app.post("/newOrder", async (req, res) => {
     res.status(201).json({ message: "Order saved", order: newOrder });
   } catch (err) {
     console.error("❌ Error saving order:", err);
-    res.status(500).json({ error: "Failed to save order" });
+    res.status(500).json({  error: "Failed to save order" });
   }
 });
 
