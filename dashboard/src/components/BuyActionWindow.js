@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import GeneralContext from "./GeneralContext";
@@ -21,16 +20,15 @@ const BuyActionWindow = ({ uid }) => {
       });
 
       alert("✅ Order submitted successfully!");
+      closeBuyWindow(); // move inside try block so it only closes on success
     } catch (err) {
       console.error("❌ Error submitting order:", err);
       alert("❌ Failed to submit order.");
     }
-
-    closeBuyWindow(); // this now works!
   };
 
   const handleCancelClick = () => {
-    closeBuyWindow(); // this now works!
+    closeBuyWindow();
   };
 
   return (
@@ -64,12 +62,12 @@ const BuyActionWindow = ({ uid }) => {
       <div className="buttons">
         <span>Margin required ₹140.65</span>
         <div>
-          <Link className="btn btn-blue" onClick={handleBuyClick}>
+          <button className="btn btn-blue" onClick={handleBuyClick}>
             Buy
-          </Link>
-          <Link to="" className="btn btn-grey" onClick={handleCancelClick}>
+          </button>
+          <button className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
-          </Link>
+          </button>
         </div>
       </div>
     </div>
