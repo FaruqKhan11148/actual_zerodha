@@ -9,23 +9,28 @@ const BuyActionWindow = ({ uid, onOrderPlaced }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState();
 
-  const handleBuyClick = async () => {
-    try {
-      await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
-        name: uid,
-        qty: stockQuantity,
-        price: stockPrice,
-        mode: "BUY",
-      });
+const handleBuyClick = async () => {
+  try {
+    await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
+      name: uid,
+      qty: stockQuantity,
+      price: stockPrice,
+      mode: "BUY",
+    });
 
-      alert("✅ Order submitted successfully!");
-      if (onOrderPlaced) onOrderPlaced();
+    alert("Order submitted successfully!");
+
+    // Give UI a moment before closing
+    if (onOrderPlaced) onOrderPlaced();
+
+    setTimeout(() => {
       closeBuyWindow();
-    } catch (err) {
-      console.error("❌ Error submitting order:", err);
-      alert("❌ Failed to submit order.");
-    }
-  };
+    }, 100); // short delay for smoother feel
+  } catch (err) {
+    console.error("Error submitting order:", err);
+    alert("Failed to submit order.");
+  }
+};
 
   return (
     <div className="buy-window-wrapper">
