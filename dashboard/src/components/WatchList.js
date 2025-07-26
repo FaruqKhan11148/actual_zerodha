@@ -73,41 +73,30 @@ const WatchList = () => {
 
 export default WatchList;
 
-const WatchListItem = ({ stock }) => {
-  const [showWatchlistActions, setShowWatchlistActions] = useState(false);
-
-  const handleMouseEnter = (e) => {
-    setShowWatchlistActions(true);
-  };
-
-  const handleMouseLeave = (e) => {
-    setShowWatchlistActions(false);
-  };
-
-  return (
-    <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div className="item">
-        <p className={stock.isDown ? "down" : "up"}>{stock.name}</p>
-        <div className="itemInfo">
-          <span className="percent">{stock.percent}</span>
-          {stock.isDown ? (
-            <KeyboardArrowDown className="down" />
-          ) : (
-            <KeyboardArrowUp className="down" />
-          )}
-          <span className="price">{stock.price}</span>
-        </div>
-      </div>
-      {showWatchlistActions && <WatchListActions stock={stock} />}
-    </li>
-  );
-};
-
 const WatchListActions = ({ stock }) => {
   const generalContext = useContext(GeneralContext);
 
-  const handleBuyClick = () => {
-    generalContext.openBuyWindow(stock); // Pass full stock if needed
+  const handleBuyClick = async () => {
+    generalContext.openBuyWindow(stock); // If you want to show a buy popup
+
+    // You can either take inputs from modal, or use default for now:
+    const qty = 5;
+    const price = 200;
+
+    try {
+      const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
+        name: stock.name,
+        qty,
+        price,
+        mode: "Buy"
+      });
+
+      console.log("✅ Order submitted:", response.data);
+      alert("✅ Order submitted successfully!");
+    } catch (err) {
+      console.error("❌ Error submitting order:", err);
+      alert("❌ Failed to submit order.");
+    }
   };
 
   return (
@@ -118,10 +107,10 @@ const WatchListActions = ({ stock }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
-          onClick={handleBuyClick}
         >
-          <button className="buy">Buy</button>
+          <button className="buy" onClick={handleBuyClick}>Buy</button>
         </Tooltip>
+
         <Tooltip
           title="Sell (S)"
           placement="top"
@@ -130,6 +119,7 @@ const WatchListActions = ({ stock }) => {
         >
           <button className="sell">Sell</button>
         </Tooltip>
+
         <Tooltip
           title="Analytics (A)"
           placement="top"
@@ -140,6 +130,7 @@ const WatchListActions = ({ stock }) => {
             <BarChartOutlined className="icon" />
           </button>
         </Tooltip>
+
         <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
           <button className="action">
             <MoreHoriz className="icon" />
