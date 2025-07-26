@@ -63,7 +63,7 @@ const handleBuyClick = async () => {
         </div>
 
         <div className="buttons">
-          <span className="margin">Margin required ₹140.65</span>
+          <span className="margin">Margin required ₹1111</span>
           <div>
             <button className="btn btn-blue" onClick={handleBuyClick}>
               Buy
