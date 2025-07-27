@@ -15,30 +15,9 @@ const Orders = () => {
       });
   }, []);
 
- const submitOrder = async () => {
-  try {
-    const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
-      name: "Micro",
-      qty: 1,
-      price: 111,
-      mode: "Buy"
-    });
-    console.log("✅ Order submitted:", response.data);
-
-    // 👉 Re-fetch orders after submission
-    const updatedOrders = await axios.get("https://tradetrack-zbfc.onrender.com/allOrders");
-    setOrders(updatedOrders.data);
-
-  } catch (err) {
-    console.error("❌ Error submitting order:", err);
-  }
-};
-
   
 return (
   <div className="orders">
-    <button className="submit-btn" onClick={submitOrder}>Submit Test Order</button> {/* 🔥 Add this */}
-
     {orders.length === 0 ? (
       <div className="no-orders">
         <p>You haven't placed any orders today</p>
