@@ -10,25 +10,28 @@ const BuyActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0);
 
-  const handleBuyClick = async () => {
-    try {
-      const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
-        name: uid, // Stock name or ID
-        qty: stockQuantity,
-        price: stockPrice,
-        mode: "Buy",
-      });
+ const handleBuyClick = async () => {
+  console.log("🟢 Buy button clicked");
+  try {
+    const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
+      name: uid,
+      qty: stockQuantity,
+      price: stockPrice,
+      mode: "Buy",
+    });
 
-      console.log("✅ Order submitted:", response.data);
+    console.log("✅ Order submitted:", response.data);
 
-      // Close the buy window after success
-      closeBuyWindow();
-    } catch (err) {
-      console.error("❌ Error submitting order:", err);
-    }
-  };
+    closeBuyWindow();
+    console.log("🚪 Called closeBuyWindow()");
+  } catch (err) {
+    console.error("❌ Error submitting order:", err);
+  }
+};
+
 
   const handleCancelClick = () => {
+    console.log("🚪 Called closeBuyWindow()");
     closeBuyWindow(); // Close window on cancel
   };
 
@@ -36,7 +39,7 @@ const BuyActionWindow = ({ uid }) => {
   return (
     <div className="container" id="buy-window" draggable="true">
       <div className="regular-order">
-        <div className="inputs">
+        <div className="inputs">  
           <fieldset>
             <legend>Qty.</legend>
             <input
