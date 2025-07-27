@@ -17,9 +17,9 @@ const app = express();
 
 app.use(cors());
 app.use(cors({
-  origin: "*", // or your frontend domain
+  origin: "https://tracktrade-lovat.vercel.app", // make sure HTTPS is there
   methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
+  credentials: true,
 }));
 
 app.use(express.json());
