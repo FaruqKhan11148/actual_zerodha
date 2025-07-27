@@ -15,12 +15,13 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+// Allow from your frontend domain
 app.use(cors({
-  origin: "https://tracktrade-lovat.vercel.app", // make sure HTTPS is there
+  origin: "https://your-frontend-domain.onrender.com", // <-- change this to your actual frontend URL
   methods: ["GET", "POST"],
-  credentials: true,
+  allowedHeaders: ["Content-Type"],
 }));
+
 
 app.use(express.json());
 
