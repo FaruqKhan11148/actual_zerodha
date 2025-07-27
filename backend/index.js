@@ -17,7 +17,7 @@ const app = express();
 
 // Allow from your frontend domain
 app.use(cors({
-  origin: "https://your-frontend-domain.onrender.com", // <-- change this to your actual frontend URL
+  origin: "https://tracktrade-lovat.vercel.app", // <-- change this to your actual frontend URL
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 }));
