@@ -8,7 +8,7 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("https://tradetrack-zbfc.onrender.com/allHoldings").then((res) => {
+    axios.get("https://tracktrade-lovat.vercel.app/allHoldings").then((res) => {
       // console.log(res.data);
       setAllHoldings(res.data);
     });

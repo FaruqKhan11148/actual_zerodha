@@ -11,27 +11,26 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0);
 
  const handleBuyClick = async () => {
-  console.log("🟢 Buy button clicked");
+  console.log("Buy button clicked");
   try {
-    const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", {
+    const response = await axios.post("https://tracktrade-lovat.vercel.app/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
       mode: "Buy",
     });
 
-    console.log("✅ Order submitted:", response.data);
-
+    console.log("Order submitted:", response.data);
     closeBuyWindow();
-    console.log("🚪 Called closeBuyWindow()");
+    console.log("Called closeBuyWindow()");
   } catch (err) {
-    console.error("❌ Error submitting order:", err);
+    console.error("Error submitting order:", err);
   }
 };
 
 
   const handleCancelClick = () => {
-    console.log("🚪 Called closeBuyWindow()");
+    console.log("Called closeBuyWindow()");
     closeBuyWindow(); // Close window on cancel
   };
 
