@@ -8,8 +8,9 @@ function OpenAcc() {
         Simple and intuitive apps &middot; ₹0 for investments &middot; ₹20 for intraday and F&amp;O trades.
       </p>
       <button onClick={() => window.location.href = 'http://localhost:3001/signup'} className="btn btn-primary px-4 py-2 fw-medium">
-        Signup for free
+        Login
       </button>
+      <p>Click for Login</p>
     </div>  
   );
 }

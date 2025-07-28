@@ -12,13 +12,13 @@ function Signup() {
     return ( 
         <>
         <OpenAccFree/>
-        <SignupNow/>
         <Investment/>
         <Steps/>
         <UnbeatenPricing/>
         <Explore/>
         <Faqs/>
         <OpenAcc/>
+        <SignupNow/>
         </>
      );
 }

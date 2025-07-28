@@ -1,9 +1,12 @@
 require("dotenv").config();
-
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const User = require('./model/user');
+const userRouter = require('./routes/user');
+const session = require("express-session");
+const passport = require("passport");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
@@ -15,15 +18,50 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-// Allow from your frontend domain
+// session + passport setup (make sure it's before routes)
+app.use(session({
+  secret: 'tracktradingSecret',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Passport config
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3004',
+  'https://tracktrade-lovat.vercel.app'
+];
+
 app.use(cors({
-  origin: "https://tracktrade-lovat.vercel.app", // <-- change this to your actual frontend URL
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
+  origin: function (origin, callback) {
+    console.log("Request Origin:", origin);
+
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // ✅ IMPORTANT: allow cookies and credentials
 }));
 
 
+
+app.get("/hh", (req, res) => {
+  res.send("✅ Backend is up and running!");
+});
+
 app.use(express.json());
+app.use("/", userRouter); 
 
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});

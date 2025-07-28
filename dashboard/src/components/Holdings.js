@@ -8,9 +8,10 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("https://tracktrade-lovat.vercel.app/allHoldings").then((res) => {
+    axios.get("http://localhost:3004/allHoldings").then((res) => {
       // console.log(res.data);
       setAllHoldings(res.data);
+      console.log("Holdings response:", res.data);
     });
   }, []);
 

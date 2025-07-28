@@ -6,7 +6,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("https://tracktrade-lovat.vercel.app/allOrders") // Replace with your backend URL
+    axios.get("http://localhost:3004/allOrders") // Replace with your backend URL
       .then((res) => {
         setOrders(res.data);
       })

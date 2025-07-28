@@ -13,7 +13,7 @@ const BuyActionWindow = ({ uid }) => {
  const handleBuyClick = async () => {
   console.log("Buy button clicked");
   try {
-    const response = await axios.post("https://tracktrade-lovat.vercel.app/newOrder", {
+    const response = await axios.post("http://localhost:3004/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
