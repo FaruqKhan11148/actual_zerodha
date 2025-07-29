@@ -37,7 +37,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3004',
-  'https://tracktrade-lovat.vercel.app'
+  'https://tracktrade-lovat.vercel.app',
+  'https://tradetrack-zbfc.onrender.com'
 ];
 
 app.use(cors({

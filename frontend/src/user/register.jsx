@@ -21,7 +21,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3004/register', {
+      const res = await fetch('https://tradetrack-zbfc.onrender.com/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // send cookies if session-based

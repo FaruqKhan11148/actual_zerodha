@@ -13,7 +13,7 @@ const BuyActionWindow = ({ uid }) => {
  const handleBuyClick = async () => {
   console.log("Buy button clicked");
   try {
-    const response = await axios.post("http://localhost:3004/newOrder", {
+    const response = await axios.post("https://tradetrack-zbfc.onrender.com/newOrder", { //backend url
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

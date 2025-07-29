@@ -20,7 +20,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3004/register", {
+      const res = await fetch("https://tradetrack-zbfc.onrender.com/register", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -28,7 +28,7 @@ function Signup() {
       });
 
       if (res.ok) {
-        window.location.href = 'http://localhost:3001';
+        window.location.href = 'https://tracktrade-lovat.vercel.app';
       } else {
         const error = await res.json();
         alert(error.message || 'Signup failed');
