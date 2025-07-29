@@ -12,14 +12,14 @@ function Footer() {
             All rights reserved.
           </p>
           <div className="footer footer-links mt-5">
-            <i class="fa-brands fa-x-twitter"></i>
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
+            <i className="fa-brands fa-x-twitter"></i>
+            <i className="fa-brands fa-square-facebook"></i>
+            <i className="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-linkedin-in"></i>
             <hr />
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-brands fa-whatsapp"></i>
-            <i class="fa-brands fa-telegram"></i>
+            <i className="fa-brands fa-youtube"></i>
+            <i className="fa-brands fa-whatsapp"></i>
+            <i className="fa-brands fa-telegram"></i>
             
           </div>
         </div>

@@ -1,7 +1,6 @@
 import './App.css';
-// App.js
 const App = () => {
-  return <></>; // Empty component for now
+  return <a href="https://reactjs.org">Learn React</a>;
 };
 
 export default App;

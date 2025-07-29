@@ -20,7 +20,7 @@ function LeftSection({
             <p>{productDescription}</p>
             <div className="">
               <a href={tryDemo} style={{textDecoration:"none", marginRight:"30px"}}>Try Demo<i style={{color:"blue"}} class="fa-solid fa-arrow-right"></i></a>
-              <a href={learnMore} style={{textDecoration:"none"}}>Learn More<i style={{color:"blue"}} class="fa-solid fa-arrow-right"></i></a>
+              <a href={learnMore} style={{textDecoration:"none"}}>Learn More<i style={{color:"blue"}} className="fa-solid fa-arrow-right"></i></a>
             </div>
             <div style={{marginTop:"30px"}}>
               <a href={googlePlay} style={{margin:"0 45px 0 0"}}><img src="media/images/googlePlayBadge.svg" alt="" /></a>

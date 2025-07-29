@@ -16,7 +16,7 @@ function Hero() {
                                     <h4 >Search for an answer or browse help topics to create a ticket</h4>
                                     <div className="hero_search" style={{width:"650px", backgroundColor:"white", borderRadius:"2px", marginTop:"50px"}}>
                                         <input style={{width:"600px",borderRadius:"2px", height:"60px", border:"none",outline:"none"}} type="text" placeholder='Eg: how do i active F&Q, why is my order getting rejected.... ' />
-                                        <i style={{color:"black"}} class="fa-solid fa-magnifying-glass "></i>
+                                        <i style={{color:"black"}} className="fa-solid fa-magnifying-glass "></i>
                                     </div>
                                     <div style={{marginTop:"20px",width:"700px",display:"flex", justifyContent:"space-evenly", textDecoration:"underline"}}>
                                         <h6>Track account opening</h6>

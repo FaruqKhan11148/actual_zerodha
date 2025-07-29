@@ -20,7 +20,8 @@ function HomePage() {
             <Education/>
             <OpenAccount/>
         </>
-     );
+    );
 }
+
 
 export default HomePage;
