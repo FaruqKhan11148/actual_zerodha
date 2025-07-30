@@ -33,37 +33,17 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-const allowedOrigins = [
-  'https://actual-zerodha.vercel.app',
-  'https://tracktrade-lovat.vercel.app',
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:3004',
-  'https://tradetrack-zbfc.onrender.com'
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log('🛰️ Request from:', origin);
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS Blocked 🚫'));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // 💥 Handle preflight requests!
-
+app.use(cors({
+  origin: 'https://tracktrade-lovat.vercel.app', // 👈 your frontend domain
+  credentials: true
+}));
 
 app.use(express.json());
 
 
 
 app.get("/hh", (req, res) => {
-  res.send("✅ Backend is up and running!");
+  res.send("Backend is up and running!");
 });
 
 app.use("/", userRouter); 
