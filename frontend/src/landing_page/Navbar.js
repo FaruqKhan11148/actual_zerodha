@@ -27,7 +27,7 @@ function Navbar() {
             <form className="d-flex" role="search">
               <ul className="navbar-nav mb-lg-0">
                 <li className="nav-item">
-                  <a href="https://tradetrack-zbfc.onrender.com/dashboard" target="_blank" rel="noopener noreferrer">
+                  <a href="https://tradetrack-zbfc.onrender.com" target="_blank" rel="noopener noreferrer">
                       <button className="go-btn">Go to Dashboard</button>
                   </a>
                 </li>
