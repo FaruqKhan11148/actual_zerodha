@@ -35,16 +35,12 @@ passport.deserializeUser(User.deserializeUser());
 
 const allowedOrigins = [
   'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:3004',
-  'https://tracktrade-lovat.vercel.app',
-  'https://tradetrack-zbfc.onrender.com',
-  'https://actual-zerodha.vercel.app'
+  'https://actual-zerodha.vercel.app',
+  'https://tracktrade-lovat.vercel.app'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log('Request Origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -55,8 +51,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Add this line for preflight requests
+app.options('*', cors(corsOptions)); // Handle preflight requests
 
+
+app.use(express.json());
 
 
 
@@ -64,7 +62,6 @@ app.get("/hh", (req, res) => {
   res.send("✅ Backend is up and running!");
 });
 
-app.use(express.json());
 app.use("/", userRouter); 
 
 app.get("/allHoldings", async (req, res) => {
