@@ -34,24 +34,28 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 const allowedOrigins = [
-  'http://localhost:3000',
   'https://actual-zerodha.vercel.app',
-  'https://tracktrade-lovat.vercel.app'
+  'https://tracktrade-lovat.vercel.app',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3004',
+  'https://tradetrack-zbfc.onrender.com'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log('🛰️ Request from:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error('CORS Blocked 🚫'));
     }
   },
-  credentials: true
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Handle preflight requests
+app.options('*', cors(corsOptions)); // 💥 Handle preflight requests!
 
 
 app.use(express.json());
