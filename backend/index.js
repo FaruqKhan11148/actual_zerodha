@@ -33,12 +33,15 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// Allow credentials and restrict origin
 app.use(cors({
-  origin: 'https://tracktrade-lovat.vercel.app', // 👈 your frontend domain
-  credentials: true
+  origin: 'https://actual-zerodha.vercel.app',
+  credentials: true, // 👈 allow cookies/auth headers
 }));
 
+// Also make sure to use these before routes
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 
