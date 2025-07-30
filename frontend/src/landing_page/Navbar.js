@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import './Navbar'
+import './index.css';
 
 function Navbar() {
   return (
@@ -31,34 +33,11 @@ function Navbar() {
                     href="https://tracktrade-lovat.vercel.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-block',
-                      padding: '5px 10px',
-                      background: 'linear-gradient(135deg, rgba(106, 188, 255, 1), rgba(74, 169, 247, 1))',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '8px',
-                      fontSize: '16px',
-                      fontWeight: '600',
-                      textDecoration: 'none',
-                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                      transition: 'all 0.3s ease-in-out'
-                    }}
-                    onMouseOver={e => {
-                      e.target.style.background = 'linear-gradient(135deg, #43A047, #1B5E20)';
-                      e.target.style.transform = 'translateY(-2px)';
-                      e.target.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.25)';
-                    }}
-                    onMouseOut={e => {
-                      e.target.style.background = 'linear-gradient(135deg, #4CAF50, #2E8B57)';
-                      e.target.style.transform = 'translateY(0)';
-                      e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                    }}
+                    className="dashboard-btn"
                   >
                     Go to Dashboard
                   </a>
                 </li>
-
                 <li className="nav-item">
                   <Link className="nav-link active text-muted" aria-current="page" to={"/signup"}>
                     Signup
