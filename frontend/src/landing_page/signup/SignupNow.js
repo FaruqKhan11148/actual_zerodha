@@ -20,15 +20,16 @@ function Signup() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const res = await fetch("https://tradetrack-zbfc.onrender.com/register", {
+        const res = await fetch('https://tradetrack-zbfc.onrender.com/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
           body: JSON.stringify(form),
+          credentials: 'include',
         });
 
+
         if (res.ok) {
-          window.location.href = 'https://tracktrade-lovat.vercel.app';
+          window.location.href = "https://tracktrade-lovat.vercel.app";
         } else {
           const error = await res.json();
           alert(error.message || 'Signup failed');
@@ -53,7 +54,7 @@ function Signup() {
 
         {/* Right Side – Form */}
         <div className="col-md-6 d-flex flex-column justify-content-center">
-          <h2 className="mb-2">Signup noww</h2>
+          <h2 className="mb-2">Signup</h2>
           <p className="text-muted mb-4">Or track your existing application</p>
 
           <form onSubmit={handleSubmit}>

@@ -19,8 +19,8 @@ const app = express();
 
 // ---------- CORS (MUST COME BEFORE sessions) ----------
 app.use(cors({
-  origin: "https://actual-zerodha.vercel.app", // frontend domain
-  credentials: true
+  origin: ['https://actual-zerodha.vercel.app', 'https://tracktrade-lovat.vercel.app'],
+  credentials: true,
 }));
 
 // ---------- Body Parsing ----------
@@ -33,8 +33,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,         // True for HTTPS only
-    sameSite: 'none'      // Required for cross-site cookies
+    httpOnly: true,
+    secure: true, // 👈 Important for HTTPS
+    sameSite: 'None', // 👈 Needed for cross-site cookies
   }
 }));
 
