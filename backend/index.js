@@ -33,10 +33,22 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Allow credentials and restrict origin
+const allowedOrigins = [
+  "https://actual-zerodha.vercel.app", // frontend site
+  "https://tracktrade-lovat.vercel.app" // dashboard site (optional if it also talks to backend)
+];
+
 app.use(cors({
-  origin: 'https://actual-zerodha.vercel.app',
-  credentials: true, // 👈 allow cookies/auth headers
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed from this origin: " + origin));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 }));
 
 // Also make sure to use these before routes
