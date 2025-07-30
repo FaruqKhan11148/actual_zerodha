@@ -53,7 +53,7 @@ function Signup() {
 
         {/* Right Side – Form */}
         <div className="col-md-6 d-flex flex-column justify-content-center">
-          <h2 className="mb-2">Signup now</h2>
+          <h2 className="mb-2">Sign</h2>
           <p className="text-muted mb-4">Or track your existing application</p>
 
           <form onSubmit={handleSubmit}>
