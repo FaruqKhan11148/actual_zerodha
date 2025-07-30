@@ -33,8 +33,8 @@ function Navbar() {
                     rel="noopener noreferrer"
                     style={{
                       display: 'inline-block',
-                      padding: '10px 20px',
-                      background: 'linear-gradient(135deg, #4CAF50, #2E8B57)',
+                      padding: '5px 10px',
+                      background: 'linear-gradient(135deg, rgba(106, 188, 255, 1), rgba(74, 169, 247, 1))',
                       color: 'white',
                       border: 'none',
                       borderRadius: '8px',
