@@ -17,27 +17,27 @@ function Signup() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch("https://tradetrack-zbfc.onrender.com/register", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(form),
-      });
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch("https://tradetrack-zbfc.onrender.com/register", {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(form),
+        });
 
-      if (res.ok) {
-        window.location.href = 'https://tracktrade-lovat.vercel.app';
-      } else {
-        const error = await res.json();
-        alert(error.message || 'Signup failed');
+        if (res.ok) {
+          window.location.href = 'https://tracktrade-lovat.vercel.app';
+        } else {
+          const error = await res.json();
+          alert(error.message || 'Signup failed');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Something went wrong');
       }
-    } catch (err) {
-      console.error(err);
-      alert('Something went wrong');
-    }
-  };
+    };
 
   return (
     <div className="container d-flex justify-content-center align-items-center" style={{ marginTop: "100px" }}>

@@ -42,19 +42,21 @@ const allowedOrigins = [
   'https://actual-zerodha.vercel.app'
 ];
 
-app.use(cors({
+const corsOptions = {
   origin: function (origin, callback) {
-    console.log("Request Origin:", origin);
-
-    // Allow requests with no origin (like mobile apps or curl)
+    console.log('Request Origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true // ✅ IMPORTANT: allow cookies and credentials
-}));
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Add this line for preflight requests
+
 
 
 
