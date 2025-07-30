@@ -28,16 +28,6 @@ function Navbar() {
             <form className="d-flex" role="search">
               <ul className="navbar-nav mb-lg-0">
                 <li className="nav-item">
-                  <a
-                    href="https://tracktrade-lovat.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="dashboard-btn"
-                  >
-                    Go to Dashboard
-                  </a>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link active text-muted" aria-current="page" to={"/signup"}>
                     Signup
                   </Link>
@@ -62,7 +52,16 @@ function Navbar() {
                     Support
                   </Link>
                 </li>
-                
+                <li className="nav-item">
+                  <a
+                    href="https://tracktrade-lovat.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dashboard-btn"
+                  >
+                    Go to Dashboard
+                  </a>
+                </li>
               </ul>
             </form>
           </div>
