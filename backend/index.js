@@ -18,13 +18,6 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-// session + passport setup (make sure it's before routes)
-app.use(session({
-  secret: 'tracktradingSecret',
-  resave: false,
-  saveUninitialized: false,
-}));
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -33,23 +26,35 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-const allowedOrigins = [
-  "https://actual-zerodha.vercel.app", // frontend site
-  "https://tracktrade-lovat.vercel.app" // dashboard site (optional if it also talks to backend)
-];
-
 app.use(cors({
   origin: function (origin, callback) {
+    const allowedOrigins = [
+      "https://actual-zerodha.vercel.app",
+      "https://tracktrade-lovat.vercel.app"
+    ];
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("CORS not allowed from this origin: " + origin));
+      callback(new Error("CORS error: " + origin));
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 }));
+
+app.use(session({
+  secret: 'tracktradingSecret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: "none",
+    secure: true
+  }
+}));
+
+app.options('*', cors()); // handle preflight globally
+
 
 // Also make sure to use these before routes
 app.use(express.json());
