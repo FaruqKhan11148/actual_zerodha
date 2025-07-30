@@ -27,33 +27,22 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "https://actual-zerodha.vercel.app",
-      "https://tracktrade-lovat.vercel.app"
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS error: " + origin));
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: [
+    "https://actual-zerodha.vercel.app",
+    "https://tracktrade-lovat.vercel.app"
+  ],
   credentials: true,
 }));
 
 app.use(session({
-  secret: 'tracktradingSecret',
+  secret: 'yourSecret',
   resave: false,
   saveUninitialized: false,
   cookie: {
-    sameSite: "none",
-    secure: true
+    secure: true, // since you're using HTTPS
+    sameSite: 'none', // VERY IMPORTANT for cross-origin cookies
   }
 }));
-
-app.options('*', cors()); // handle preflight globally
 
 
 // Also make sure to use these before routes
