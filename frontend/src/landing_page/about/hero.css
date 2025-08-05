@@ -1,0 +1,96 @@
+    :root {
+  --base-font: 1em;
+  --heading-font-size: 2rem;
+  --body-font-size: 1.1rem;
+  --line-height: 1.8;
+  --max-width: 1200px;
+  --gap: 1rem;
+}
+
+/* Container centering */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Reset basics if you don't have a global reset */
+h1 {
+  margin: 0;
+  font-size: var(--heading-font-size);
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 1rem;
+  font-size: var(--body-font-size);
+  line-height: var(--line-height);
+}
+
+/* Row and columns (simple flex fallback) */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+}
+
+/* Typography tweaks inside hero area */
+.hero-header {
+  font-weight: 600;
+}
+
+/* Border top section */
+.border-top {
+  border-top: 1px solid #ddd;
+  color: #555;
+}
+
+/* Link style */
+a {
+  color: inherit;
+}
+
+/* Responsive: Tablets (pad) */
+@media (max-width: 1024px) {
+  :root {
+    --heading-font-size: 1.75rem;
+    --body-font-size: 1.05rem;
+  }
+
+  .col-6 {
+    flex: 0 0 100%; /* stack */
+  }
+
+  .row.p-5 {
+    padding: 2rem; /* reduce padding a bit */
+  }
+
+  .row.p-5.mt-5.mb-5 {
+    text-align: center;
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  :root {
+    --heading-font-size: 1.5rem;
+    --body-font-size: 1rem;
+  }
+
+  .row.p-5 {
+    padding: 1.5rem;
+  }
+
+  .col-6 {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+}
