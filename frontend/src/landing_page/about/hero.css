@@ -1,4 +1,4 @@
-    :root {
+:root {
   --base-font: 1em;
   --heading-font-size: 2rem;
   --body-font-size: 1.1rem;
@@ -7,14 +7,14 @@
   --gap: 1rem;
 }
 
-/* Container centering */
+/* 🌐 Container centering */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Reset basics if you don't have a global reset */
+/* 📝 Reset basics */
 h1 {
   margin: 0;
   font-size: var(--heading-font-size);
@@ -27,7 +27,7 @@ p {
   line-height: var(--line-height);
 }
 
-/* Row and columns (simple flex fallback) */
+/* 📦 Row and columns */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -39,47 +39,33 @@ p {
   box-sizing: border-box;
 }
 
-/* Typography tweaks inside hero area */
+/* 🖋️ Typography tweaks */
 .hero-header {
   font-weight: 600;
 }
 
-/* Border top section */
+/* 🔳 Border top section */
 .border-top {
   border-top: 1px solid #ddd;
   color: #555;
 }
 
-/* Link style */
+/* 🔗 Link style */
 a {
   color: inherit;
+  text-decoration: none;
 }
 
-/* Responsive: Tablets (pad) */
-@media (max-width: 1024px) {
-  :root {
-    --heading-font-size: 1.75rem;
-    --body-font-size: 1.05rem;
-  }
-
-  .col-6 {
-    flex: 0 0 100%; /* stack */
-  }
-
-  .row.p-5 {
-    padding: 2rem; /* reduce padding a bit */
-  }
-
-  .row.p-5.mt-5.mb-5 {
-    text-align: center;
-  }
-}
-
-/* Responsive: Mobile */
+/* 📱 Mobile first adjustments (250px → 768px) */
 @media (max-width: 768px) {
   :root {
     --heading-font-size: 1.5rem;
     --body-font-size: 1rem;
+  }
+
+  .row {
+    flex-direction: column;
+    text-align: center;
   }
 
   .row.p-5 {
@@ -87,10 +73,48 @@ a {
   }
 
   .col-6 {
+    flex: 0 0 100%; /* stack */
     padding: 1rem;
   }
 
   h1 {
     font-size: 1.4rem;
+    line-height: 1.5;
+  }
+}
+
+/* 💻 Tablets (769px → 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --heading-font-size: 1.75rem;
+    --body-font-size: 1.05rem;
+  }
+
+  .col-6 {
+    flex: 0 0 100%; /* stack on tablets too */
+  }
+
+  .row.p-5 {
+    padding: 2rem;
+  }
+
+  .row.p-5.mt-5.mb-5 {
+    text-align: center;
+  }
+}
+
+/* 🖥️ Desktop (1025px and above) */
+@media (min-width: 1025px) {
+  :root {
+    --heading-font-size: 2rem;
+    --body-font-size: 1.1rem;
+  }
+
+  .col-6 {
+    flex: 0 0 50%; /* side by side */
+  }
+
+  .row.p-5 {
+    padding: 3rem;
   }
 }
