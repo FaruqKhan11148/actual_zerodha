@@ -20,8 +20,7 @@ return (
   <div className="orders">
     {orders.length === 0 ? (
       <div className="no-orders">
-        <p>You haven't placed any orders today</p>
-        <a href="/" className="btn">Get started</a>
+        <p>Your orders are Loading...</p>
       </div>
     ) : (
       <div className="order-table">
