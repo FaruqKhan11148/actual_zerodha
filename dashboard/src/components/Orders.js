@@ -20,7 +20,7 @@ return (
   <div className="orders">
     {orders.length === 0 ? (
       <div className="no-orders">
-        <p>Your orders are Loading...</p>
+        <p style={{color:"Black"}}>Your orders are Loading...</p>
       </div>
     ) : (
       <div className="order-table">
