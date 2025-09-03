@@ -29,7 +29,7 @@ function Navbar() {
               <ul className="navbar-nav mb-lg-0">
                 <li className="nav-item">
                   <Link className="nav-link active text-muted" aria-current="page" to={"/signup"}>
-                    Signup
+                    Sign
                   </Link>
                 </li>
                 <li className="nav-item">
