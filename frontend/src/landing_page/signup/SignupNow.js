@@ -52,13 +52,11 @@ function Signup() {
           />
         </div>
 
-        {/* Right Side – Form */}
         <div className="col-md-6 d-flex flex-column justify-content-center">
           <h2 className="mb-2">Signup</h2>
           <p className="text-muted mb-4">Or track your existing application</p>
 
           <form onSubmit={handleSubmit}>
-            {/* Username */}
             <input
               type="text"
               name="username"
@@ -68,7 +66,6 @@ function Signup() {
               required
             />
 
-            {/* Email */}
             <input
               type="email"
               name="email"
@@ -78,7 +75,6 @@ function Signup() {
               required
             />
 
-            {/* Password */}
             <input
               type="password"
               name="password"
@@ -88,7 +84,6 @@ function Signup() {
               required
             />
 
-            {/* Phone (with +91 prefix shown but fixed) */}
             <div className="d-flex mb-2">
               <span className="input-group-text bg-light border rounded-start">+91</span>
               <input
@@ -102,7 +97,6 @@ function Signup() {
               />
             </div>
             
-            {/* Gender */}
             <select
               name="gender"
               className="form-select mb-3"
@@ -114,13 +108,11 @@ function Signup() {
               <option value="female">Female</option>
             </select>
 
-            {/* Submit */}
             <button type="submit" className="btn btn-primary mb-3" style={{ width: "250px" }}>
               Register
             </button>
           </form>
 
-          {/* Terms */}
           <p className="text-muted small">
             By proceeding, you agree to the Zerodha{" "}
             <a href="https://zerodha.com/terms/" target="_blank" rel="noreferrer">
