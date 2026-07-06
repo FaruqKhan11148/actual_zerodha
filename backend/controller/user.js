@@ -5,7 +5,7 @@ module.exports.register = async (req, res, next) => {
   const { username, password, email, phone, age, gender } = req.body;
 
   try {
-    const newUser = new User({ username, email, phone, age, gender });
+    const newUser = new User({ username, email, phone, age});
 
     const registeredUser = await User.register(newUser, password); // Uses passport-local-mongoose
 
