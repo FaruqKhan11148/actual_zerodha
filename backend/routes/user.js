@@ -20,6 +20,6 @@ router.route("/login")
     userController.login
   );
 
-// router.get('/logout', userController.logout);
+router.get('/logout', userController.logout);
 
 module.exports = router;
