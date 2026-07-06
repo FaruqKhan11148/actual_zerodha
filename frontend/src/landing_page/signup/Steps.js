@@ -11,7 +11,6 @@ function Steps() {
     <div className="container py-5" style={{marginTop:"90px"}}>
         <h2 style={{textAlign:"center"}}>Steps to open a demat account with Zerodha</h2>
       <div className="row align-items-center" style={{marginTop:"70px"}}>
-        {/* Left Column (Image placeholder) */}
         <div className="col-md-6 text-center mb-4 mb-md-0" >
           <img
             src="media/images/steps-acop_xyz6_signup.svg"
@@ -20,7 +19,6 @@ function Steps() {
           />
         </div>
 
-        {/* Right Column (Steps) */}
         <div className="col-md-6">
           {steps.map((text, index) => (
             <div key={index} className="d-flex align-items-start mb-3">
